@@ -1,15 +1,26 @@
+function formatSpeed(speed) {
+    let result = Number(speed);
+    if (result < 10) return result.toFixed(2);
+    if (result < 100) return result.toFixed(1);
+    return result.toFixed(0);
+}
+
 function startTest() {
     const s = new Speedtest();
 
     s.onupdate = function (data) {
-        document.getElementById("dlText").textContent =
-            (data.dlStatus * 10).toFixed(2) || "0.00";
-        document.getElementById("ulText").textContent =
-            (data.ulStatus / 10).toFixed(2) || "0.00";
-        document.getElementById("pingText").textContent =
-            data.pingStatus || "0.00";
-        document.getElementById("jitterText").textContent =
-            data.jitterStatus || "0.00";
+        document.getElementById("dlText").textContent = formatSpeed(
+            data.dlStatus
+        );
+        document.getElementById("ulText").textContent = formatSpeed(
+            data.ulStatus
+        );
+        document.getElementById("pingText").textContent = formatSpeed(
+            data.pingStatus
+        );
+        document.getElementById("jitterText").textContent = formatSpeed(
+            data.jitterStatus
+        );
         switch (data.testState) {
             case -1:
                 document.getElementById("stateText").textContent =
