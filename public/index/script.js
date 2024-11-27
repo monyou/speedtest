@@ -3,7 +3,7 @@ function startTest() {
 
     s.onupdate = function (data) {
         document.getElementById("dlText").textContent =
-            (data.dlStatus * 100).toFixed(2) || "0.00";
+            (data.dlStatus * 10).toFixed(2) || "0.00";
         document.getElementById("ulText").textContent =
             (data.ulStatus / 10).toFixed(2) || "0.00";
         document.getElementById("pingText").textContent =
