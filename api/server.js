@@ -1,10 +1,12 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const port = 3010;
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "../public")));
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../views"));
 
 app.get("/", async (req, res) => {
     const userIpAddress =
